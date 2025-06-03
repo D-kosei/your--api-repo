@@ -17,15 +17,7 @@ app.post('/transcript', async (req, res) => {
   }
 });
 
-app.listen(3001, () => {
-  console.log('API listening on 3001');
-});
-
-const path = require('path');
-// 既存コードの上のほうで
-app.use(express.static(path.join(__dirname, 'frontend/build')));
-
-// APIより下に↓この記述を追加
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`API listening on ${PORT}`);
 });
